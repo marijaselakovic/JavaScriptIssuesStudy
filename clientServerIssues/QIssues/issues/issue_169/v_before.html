@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="q_before.js"></script>
+
+
+
+</head>
+<body>
+<p></p>
+
+<div id="message" ></div>
+</body>
+
+
+<script >
+    var f = function () {
+
+        Q.fcall(function () {
+            return 'hi';
+        }).then(function (value1) {
+            return value1 + ' Q';
+        }).then(function (value2) {
+            return value2 + ' library';
+        }).then(function(value3){
+            return value3+'!';
+        }).catch(function (error) {
+            console.log(error);
+        }).done();
+
+
+
+
+
+    };
+
+      var f1 = function () {
+          for (var i=0; i<100; i++) {
+              f();
+          }
+
+
+
+    };
+
+
+
+    var a = execute(f1, 10);
+    var mean=mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':0,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+
+
+</html>

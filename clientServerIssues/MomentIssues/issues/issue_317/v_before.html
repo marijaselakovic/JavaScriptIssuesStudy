@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="moment_before.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+<body>
+<p></p>
+
+<div id="message"></div>
+
+
+<script>
+    var moment_obj = moment(new Date(2009, 1, 14, 15, 25, 50, 125));
+
+    var f1 = function () {
+        for (var i=0; i<1000; i++) {
+            moment_obj.format('MM');
+            moment_obj.format('DD');
+            moment_obj.format('YYYY');
+            moment_obj.format('dddd');
+            moment_obj.format('A');
+            moment_obj.format('a');
+            moment_obj.format('H');
+            moment_obj.format('h');
+            moment_obj.format('m');
+            moment_obj.format('s');
+            moment_obj.format('MM-DD-YYYY');
+        }
+               };
+
+
+
+    var a = execute(f1, 10);
+    var mean=mean(a);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':0,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>
