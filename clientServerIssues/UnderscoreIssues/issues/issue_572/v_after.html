@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="underscore_after.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+<body>
+<p>With array push</p>
+
+<div id="message"></div>
+
+
+<script>
+    var array = [];
+    for (var i = 0; i < 10; i++) {
+        array.push(i);
+    }
+    var nestedArray = [];
+    for (i = 0; i < 20; i++) {
+        nestedArray.push(array.slice(0));
+    }
+    for (i = 0; i < 10; i++) {
+        nestedArray.push(nestedArray.slice(0));
+    }
+    var f1 = function () {
+        _.flatten(nestedArray);
+
+    };
+
+    var a = execute(f1, 10);
+    var mean=mean(a);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':1,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>
