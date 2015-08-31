@@ -44,6 +44,17 @@ In the JavaScriptIssuesStudy directory:
 ```
 node browserJsExecutor.js <command to run browser> <issue path> Nvm
 ```
+Examples of reproducing perf issue in Chrome and Firefox:
+```
+node browserJsExecutor.js google-chrome clientIssues/AngularIssues/issues/issue_4359/
+```
+OR
+```
+node browserJsExecutor.js firefox clientIssues/AngularIssues/issues/issue_4359/
+```
+
+
+
 
 
 
