@@ -32,8 +32,7 @@ Where:
 
 We use the following values in our experiments:
 ``` Nvm = 5, Nwarmup=5, Nmeasure=10 ```
-```
-```
+
 Example of reproducing perf issue that runs in server environments:
 ```
 jsexecutor serverIssues/ChalkIssues/issues/issue_27a/test_case_before.js serverIssues/ChalkIssues/issues/issue_27a/test_case_after.js 5 5 10 0.9
