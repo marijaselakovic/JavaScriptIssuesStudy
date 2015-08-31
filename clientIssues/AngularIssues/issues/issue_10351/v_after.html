@@ -28,7 +28,7 @@
         $scope.null = {a: 42};
 
         var f1 = function () {
-            for (var i = 0; i < 100000; i++) {
+            for (var i = 0; i < 50000; i++) {
                 $scope.$eval("a.null.undefined.b", {a:{null:{undefined:{b: 1}}}});
                 $scope.$eval('null.a', {null: {a: 42}});
                 $scope.$eval('this.null.a');
