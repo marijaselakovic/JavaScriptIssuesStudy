@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular_after.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="../../js/jstat.min.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="test">
+
+<div id="message"></div>
+
+
+<script>
+
+    var app = angular.module('myApp', []);
+    app.controller('test', function ($scope,$compile) {
+        var template = angular.element('<div>{{greeting = "hello world"}}</div>');
+        element = $compile(template)($scope);
+
+
+
+        var f1 = function () {
+            for (var i = 0; i < 50000; i++) {
+                template.text();
+            }
+
+        };
+        var a = execute(f1, 10);
+        var mean = jStat(a).mean();
+        console.log(mean);
+
+        $.ajax({
+            url: 'http://localhost:8081',
+            data: JSON.stringify({'mark': 1, 'mean': mean}),
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+
+                $('#message').html('done, close browser');
+
+
+                console.log('Success: ')
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+
+            }
+        });
+
+
+    });
+
+
+</script>
+
+</body>
+
+</html>

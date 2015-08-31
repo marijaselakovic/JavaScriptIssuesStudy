@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular_before.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="../../js/jstat.min.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="test">
+
+<div id="message"></div>
+
+
+<script>
+
+    var app = angular.module('myApp', []);
+    app.controller('test', function () {
+        function isWindow(obj) {
+            return obj && obj.document && obj.location && obj.alert && obj.setInterval;
+        }
+
+        var f1 = function () {
+            for (var i = 0; i < 10000; i++) {
+                isWindow(window);
+                isWindow('');
+                isWindow(23)
+
+
+            }
+
+        };
+        var a = execute(f1, 10);
+        var mean = jStat(a).mean();
+        console.log(mean);
+
+        $.ajax({
+            url: 'http://localhost:8081',
+            data: JSON.stringify({'mark': 0, 'mean': mean}),
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+
+                $('#message').html('done, close browser');
+
+
+                console.log('Success: ')
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+
+            }
+        });
+
+
+    });
+
+
+</script>
+
+</body>
+
+</html>

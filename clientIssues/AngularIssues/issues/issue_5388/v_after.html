@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="angular_after.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="invoke">
+    <p>Use f.apply always</p>
+
+
+</div>
+<div id="message"></div>
+
+</body>
+<script>
+
+    var app = angular.module('myApp', []);
+    app.controller('invoke', function ($scope) {
+        var _fn = [], _args = []
+        _fn.push( function (){ return  } )
+        _args.push( [] )
+        _fn.push( function (a){ return a } )
+        _args.push( ['a'] )
+        _fn.push( function (a,b){ return a+b } )
+        _args.push( ['a','b'] )
+        _fn.push( function (a,b,c){ return a+b+c } )
+        _args.push( ['a','b','c'] )
+        _fn.push( function (a,b,c,d){ return a+b+c+d } )
+        _args.push( ['a','b','c','d'] )
+        _fn.push( function (a,b,c,d,e){ return a+b+c+d+e } )
+        _args.push( ['a','b','c','d','e'] )
+        _fn.push( function (a,b,c,d,e,f){ return a+b+c+d+e+f } )
+        _args.push( ['a','b','c','d','e','f'] )
+        _fn.push( function (a,b,c,d,e,f,g){ return a+b+c+d+e+f+g } )
+        _args.push( ['a','b','c','d','e','f','g'] )
+        _fn.push( function (a,b,c,d,e,f,g,h){ return a+b+c+d+e+f+g+h } )
+        _args.push( ['a','b','c','d','e','f','g','h'] )
+        _fn.push( function (a,b,c,d,e,f,g,h,i){ return a+b+c+d+e+f+g+h+i } )
+        _args.push( ['a','b','c','d','e','f','g','h','i'] )
+        _fn.push( function (a,b,c,d,e,f,g,h,i,j){ return a+b+c+d+e+f+g+h+i+j } )
+        _args.push( ['a','b','c','d','e','f','g','h','i','j'] )
+        _fn.push( function (a,b,c,d,e,f,g,h,i,j,k){ return a+b+c+d+e+f+g+h+i+j+k } )
+        _args.push( ['a','b','c','d','e','f','g','h','i','j','k'] )
+
+        var fn, args;
+        function chooseRandomFn(){
+            var num = ~~(Math.random()*_fn.length);
+            fn = _fn [ num ];
+            args = _args[ num ];
+        }
+
+
+
+
+        var helper = function () {
+            chooseRandomFn();
+
+            return fn.apply(self, args);
+        };
+        var f1=function() {
+            for (var i = 0; i < 10000; i++) {
+                1 + helper();
+            }
+        }
+
+
+        var a = execute(f1, 10);
+        var mean=jStat(a).mean();
+        console.log(mean);
+
+
+        $.ajax({
+            url: 'http://localhost:8081',
+            data: JSON.stringify({'mark':1,'mean':mean}),
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+
+                $('#message').html('done, close browser');
+
+
+                console.log('Success: ')
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+
+            }
+        });
+
+
+
+    });
+</script>
+</html>

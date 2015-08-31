@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p {
+            margin: 8px;
+            font-size: 16px;
+        }
+        .selected {
+            color: blue;
+        }
+        .highlight {
+            background: yellow;
+        }
+    </style>
+
+    <script src="angular_before.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="../../js/jstat.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="test">
+    <p id="p1">Hello</p>
+    <p id="p2">and</p>
+    <p id="p3">Goodbye</p>
+
+
+
+</div>
+<div id="message"></div>
+
+</body>
+<script>
+
+    var app = angular.module('myApp', []);
+    app.controller('test', function ($scope,$compile) {
+        var el1=  document.getElementById("p1");
+        var el2=  document.getElementById("p2");
+        var el3=  document.getElementById("p3");
+        var angEl1=angular.element(el1);
+        var angEl2=angular.element(el2);
+        var angEl3=angular.element(el3);
+
+
+
+
+        var f1 = function () {
+
+            for (var i = 0; i < 1000; i++) {
+                angEl1.addClass('selected');
+                angEl2.addClass('selected');
+                angEl3.addClass('selected');
+                angEl1.addClass('highlight');
+                angEl2.addClass('highlight');
+                angEl3.addClass('highlight');
+
+
+            }
+
+        };
+
+        var a = execute(f1, 10);
+        var mean = jStat(a).mean();
+        console.log(mean);
+
+        $.ajax({
+            url: 'http://localhost:8081',
+            data: JSON.stringify({'mark': 0, 'mean': mean}),
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+
+                $('#message').html('done, close browser');
+
+
+                console.log('Success: ')
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+
+            }
+        });
+    });
+
+
+
+</script>
+</html>

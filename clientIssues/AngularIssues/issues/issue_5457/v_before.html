@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="angular_before.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="shallowCopy">
+<p>Running substr call</p>
+<div id="message"></div>
+
+
+<script>
+
+
+
+    var app = angular.module('myApp', []);
+    app.controller('shallowCopy',['$scope', function($scope) {
+
+
+
+        var shallowCopy = function (src, dst) {
+            dst = dst || {};
+
+
+            for (var key in src) {
+                if (src.hasOwnProperty(key) && key.substr(0, 2) !== '$$') {
+                    dst[key] = src[key];
+                }
+            }
+
+            return dst;
+        };
+
+
+            var f1 = function () {
+                var original = {$$some: true, $$: true};
+                var clone = {};
+
+                for (var i = 0; i < 50000; i++) {
+                    shallowCopy(original, clone);
+                }
+
+            };
+        var a = execute(f1, 10);
+        var mean=jStat(a).mean();
+        console.log(mean);
+
+        $.ajax({
+            url: 'http://localhost:8081',
+            data: JSON.stringify({'mark':0,'mean':mean}),
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+
+                $('#message').html('done, close browser');
+
+
+                console.log('Success: ')
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+
+            }
+        });
+
+
+    }]);
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

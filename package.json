@@ -1,0 +1,16 @@
+{
+  "name": "jsexecutor",
+  "version": "0.0.1",
+  "description": "Simple tool that measures the execution time of js",
+  "author": "Marija Selakovic",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "commander": "^2.5.0",
+    "simple-statistics": "^0.9.0"
+  },
+  "bin": {
+    "jsexecutor": "jsexecutor.js"
+  }
+}

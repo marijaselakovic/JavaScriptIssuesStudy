@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="angular_after.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.imnjb.me/libs/jstat/1.0.8/jstat.min.js"></script>
+
+</head>
+<body>
+
+
+<span></span>
+
+<div id="message"></div>
+<div ng-controller="Test">
+
+</div>
+
+
+</div>
+
+</body>
+<script>
+    angular.module("test", [])
+            .controller("Test", function ($scope ) {
+                function flash() {
+                    $( "div1" ).show().fadeOut( "slow" );
+                }
+                var el= angular.element(' <button>Remove Click</button>');
+
+                var click1=function(){
+
+                };
+                var click2=function(){
+
+                };
+
+                for (var i=0; i<100; i++){
+                    el.on('click'+i,click1);
+                }
+
+                var f1 = function () {
+                    for (var i=0; i<5000; i++){
+                        el.on('click'+i,click2);
+                    }
+
+                };
+
+                var a = execute(f1, 10);
+                var mean = jStat(a).mean();
+                console.log(mean);
+
+
+                $.ajax({
+                    url: 'http://localhost:8081',
+                    data: JSON.stringify({'mark': 1, 'mean': mean}),
+                    type: 'POST',
+                    contentType: 'application/json',
+                    success: function (data) {
+
+                        $('#message').html('done, close browser');
+
+
+                        console.log('Success: ')
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error: ' + error.message);
+
+                    }
+                })
+
+
+            });
+
+
+</script>
+</html>

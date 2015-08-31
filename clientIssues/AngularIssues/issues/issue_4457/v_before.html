@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="angular_before.js"></script>
+<script src="../../js/execute.js"></script>
+<script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+<div ng-app="myApp" ng-controller="customersCtrl">
+    <span>Running .html() function</span>
+
+    <p id="element1">
+        Hello!
+    </p>
+    <div id="message"></div>
+
+
+</div>
+
+</body>
+<script>
+
+
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function ($scope) {
+        //angular element becomes the alias for jquery when jquery is included
+
+        var f1 = function () {
+            for (var i = 0; i < 1000; i++) {
+                angular.element("#element1").html('');
+
+            }
+
+        };
+        var a = execute(f1, 10);
+        var mean=jStat(a).mean();
+        console.log(mean);
+
+
+        $.ajax({
+            url: 'http://localhost:8081',
+            data: JSON.stringify({'mark':0,'mean':mean}),
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+
+                $('#message').html('done, close browser');
+
+
+                console.log('Success: ')
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+
+            }
+        });
+
+
+    });
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="angular_after.js"></script>
+<script src="../../js/execute.js"></script>
+<script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+<div ng-app="myApp" ng-controller="sortedKeys">
+    <p>Use Object.keys</p>
+
+</div>
+<div id="message"></div>
+
+</body>
+<script>
+    var sortedKeys=function (obj) {
+
+        Object.keys(obj).sort();
+    };
+
+
+
+    var app = angular.module('myApp', []);
+    app.controller('sortedKeys', function ($scope) {
+        var obj={};
+
+
+        for (var i=100; i>0; i--){
+            obj[i]=i;
+
+        }
+
+        var f1=function(){
+            for (var i=0; i<1000; i++) {
+                sortedKeys(obj);
+            }
+        };
+
+        var a = execute(f1, 10);
+        var mean=jStat(a).mean();
+        console.log(mean);
+
+        $.ajax({
+            url: 'http://localhost:8081',
+            data: JSON.stringify({'mark':1,'mean':mean}),
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+
+                $('#message').html('done, close browser');
+
+
+                console.log('Success: ')
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+
+            }
+        });
+
+
+    });
+
+
+
+
+</script>
+</html>

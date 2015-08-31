@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="../../js/jstat.min.js"></script>
+</head>
+<body>
+<p>Running %2 check</p>
+
+<div>
+
+
+</div>
+<div id="message"></div>
+
+<script>
+    var obj={};
+    for (var i=0; i<100000; i++){
+        obj[i]=i+1;
+    }
+
+    var keys=Object.keys(obj);
+
+
+    var f1 = function () {
+        for (var i = 0; i < keys.length; i++) {
+            keys[i]%2===0;
+
+        }
+
+    };
+
+
+    var a = execute(f1, 10);
+    var mean=jStat(a).mean();
+    console.log(mean);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':0,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

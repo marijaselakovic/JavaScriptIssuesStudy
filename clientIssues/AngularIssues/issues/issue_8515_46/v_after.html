@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="angular_after.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="http://cdn.imnjb.me/libs/jstat/1.0.8/jstat.min.js"></script>
+
+</head>
+<body>
+
+
+<span>Exit early</span>
+
+<div id="message"></div>
+<div ng-app="myApp" ng-controller="ExampleController">
+
+</div>
+
+</div>
+
+</body>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('ExampleController', function ($scope, $compile) {
+        var log = '';
+        var child = $scope.$new();
+        var listenerRemove;
+
+        function eventFn() {
+            log += 'X';
+        }
+        listenerRemove = child.$on('abc', eventFn);
+
+
+
+
+        var f1 = function () {
+            for (var i = 0; i < 2000; i++) {
+                child.$emit('abc');
+                child.$broadcast('abc');
+                log = '';
+                listenerRemove();
+                child.$emit('abc');
+                child.$broadcast('abc');
+
+            }
+
+
+        };
+        var a = execute(f1, 10);
+        var mean = jStat(a).mean();
+        console.log(mean);
+
+
+        $.ajax({
+            url: 'http://localhost:8081',
+            data: JSON.stringify({'mark': 1, 'mean': mean}),
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+
+                $('#message').html('done, close browser');
+
+
+                console.log('Success: ')
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+
+            }
+        });
+
+
+    });
+
+
+</script>
+</html>

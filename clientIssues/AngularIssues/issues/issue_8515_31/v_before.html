@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="angular_before.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="http://cdn.imnjb.me/libs/jstat/1.0.8/jstat.min.js"></script>
+
+</head>
+<body>
+
+
+<span></span>
+
+<div id="message"></div>
+<div ng-controller="Test">
+
+</div>
+
+
+</div>
+
+</body>
+<script>
+    angular.module("test", [])
+            .controller("Test", function ($scope, $compile, $parse) {
+
+                var f1 = function () {
+                    for (var i = 0; i < 100000; i++) {
+                        $parse(function bla(){});
+
+
+                    }
+                };
+
+                var a = execute(f1, 10);
+                var mean = jStat(a).mean();
+                console.log(mean);
+
+
+                $.ajax({
+                    url: 'http://localhost:8081',
+                    data: JSON.stringify({'mark': 0, 'mean': mean}),
+                    type: 'POST',
+                    contentType: 'application/json',
+                    success: function (data) {
+
+                        $('#message').html('done, close browser');
+
+
+                        console.log('Success: ')
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error: ' + error.message);
+
+                    }
+                })
+
+
+            });
+
+
+</script>
+</html>

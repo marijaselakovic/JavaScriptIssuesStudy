@@ -1,0 +1,36 @@
+
+    var con_coef=1.96; //0.95 confidence value
+    var execute=function (f,n){
+        var a=[];
+        for (var i=0; i<n; i++){
+            if (performance.now){
+                var t0=performance.now();
+                f();
+                var t1=performance.now();
+                a.push(t1-t0);
+            }else{
+                var t0=Date.now();
+                f();
+                var t1=Date.now();
+                a.push(t1-t0);
+
+
+            }
+
+
+        }
+
+        return a;
+
+
+    };
+
+    var mean=function (a) {
+
+        return jStat(a).mean();
+
+    };
+
+
+
+
