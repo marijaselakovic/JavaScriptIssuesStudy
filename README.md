@@ -12,4 +12,26 @@ We run all experiments on a machine with a quad-core 2.10GHz CPU and 16GB RAM.
     npm install
    ```
   This will install jsexecutor with all dependencies.
+  
+#Run Experiments
+
+In the JavaScriptIssuesStudy directory:
+
+```
+jsexecutor serverIssues/<folder containing tests and program versions>/issues/issue_<issueNumber>/test_case_before.js serverIssues/<folder containing tests and program versions>/issues/issue_<issueNumber>/test_case_after.js Nvm Nwarmup Nmeasure 0.9
+```
+OR
+```
+jsexecutor clientServerIssues/<folder containing tests and program versions>/issues/issue_<issueNumber>/test_case_before.js rclientServerIssues/<folder containing tests and program versions>/issues/issue_<issueNumber>/test_case_after.js Nvm Nwarmup Nmeasure 0.9
+```
+Where:
+- ``` Nvm ```: the number of repeadely started VM instances
+- ```Nwarmup```: the number of test repetitions to warmup JIT compiler
+- ```Nmeasure```: number of test repetitions collected as an input to statistical test
+
+We use the following values in our experiments:
+``` Nvm = 5, Nwarmup=5, Nmeasure=10 ```
+```
+Example of reproducing perf issue that runs in server environments:
+jsexecutor serverIssues/ChalkIssues/issues/issue_27a/test_case_before.js serverIssues/ChalkIssues/issues/issue_27a/test_case_after.js 5 5 10 0.9
 
