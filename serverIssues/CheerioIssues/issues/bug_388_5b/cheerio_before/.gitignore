@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+coverage.html
+.DS_Store
+lib-cov
+.coverage_data
+cover_html
+.c9revisions
