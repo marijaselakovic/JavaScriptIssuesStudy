@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery_after.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+
+</head>
+<body>
+<p>Not abstracted copyCloneEvent</p>
+
+<div id="jq144" style="display:none;"></div>
+<div id="jq150" style="display:none;"></div>
+<div id="jq150rw" style="display:none;"></div>
+<div id="message"></div>
+
+
+<script>
+
+    var thismany = 100,
+            $divs = $(false),
+            containers = ["jq144", "jq150", "jq150rw"];
+
+    while (thismany--) {
+        $divs.push($('<div/>')[0]);
+    }
+
+    for (var i = 0; i < containers.length; i++) {
+        jQuery("#" + containers[i]).append($divs.clone());
+    }
+
+
+    var f1 = function () {
+        for (var i = 0; i < 10; i++) {
+            jQuery('#jq144').children().domManip('foo', true, function () {
+            });
+            jQuery('#jq150').children().domManip('foo', true, function () {
+            });
+            jQuery('#jq150rw').children().domManip('foo', true, function () {
+            });
+        }
+
+    };
+
+
+    var a = execute(f1, 10);
+    var mean = mean(a);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark': 1, 'mean': mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

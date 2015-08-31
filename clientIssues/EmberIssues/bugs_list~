@@ -1,0 +1,44 @@
+Ember.js
+
+Only merged pr
+Keyword: optimize (25 total) -- list only performance related
+https://github.com/emberjs/ember.js/pull/11338 -- avoid for in loop (reproduced without unit test)
+https://github.com/emberjs/ember.js/pull/10701 (maybe)
+https://github.com/emberjs/ember.js/pull/5547 -- done in FF large improvement
+https://github.com/emberjs/ember.js/pull/5444 -- can not build  -try
+https://github.com/emberjs/ember.js/pull/4329 -- several optimizations
+https://github.com/emberjs/ember.js/pull/3881/ -- interestring (try to reproduce) -- no difference
+https://github.com/emberjs/ember.js/pull/3288 -- no difference
+https://github.com/emberjs/ember.js/pull/3283 (try) -- no perf difference
+https://github.com/emberjs/ember.js/pull/3104
+
+Keyword: optimization
+Keyword: performance (78 total)
+https://github.com/emberjs/ember.js/pull/11513 -- not proved perf improvement
+https://github.com/emberjs/ember.js/pull/10350 -- interesting, but build can not be made
+https://github.com/emberjs/ember.js/pull/10016
+https://github.com/emberjs/ember.js/pull/9991 -- interesting -- done
+https://github.com/emberjs/ember.js/pull/9721/
+https://github.com/emberjs/ember.js/pull/9551 -- can not build 
+https://github.com/emberjs/ember.js/pull/9469 -- look into
+https://github.com/emberjs/ember.js/pull/5616/--more optimizations in one commit
+https://github.com/emberjs/ember.js/pull/5523
+https://github.com/emberjs/ember.js/pull/5450
+https://github.com/emberjs/ember.js/pull/5444 -- couldn't reproduce
+https://github.com/emberjs/ember.js/pull/5278
+https://github.com/emberjs/ember.js/pull/5212/-- done, big per improvement
+https://github.com/emberjs/ember.js/pull/4263 -- try this first (done, per improvement large)
+https://github.com/emberjs/ember.js/pull/4257 -- also dom related (couldn't reproduce)
+https://github.com/emberjs/ember.js/pull/4158 -- done
+https://github.com/emberjs/ember.js/pull/4023 -- couldn't reproduce
+https://github.com/emberjs/ember.js/pull/3755
+https://github.com/emberjs/ember.js/pull/3482
+https://github.com/emberjs/ember.js/pull/3174 - try -- with extreme test the speedup is large (done)
+https://github.com/emberjs/ember.js/pull/2921
+https://github.com/emberjs/ember.js/pull/2833
+https://github.com/emberjs/ember.js/pull/2810/
+https://github.com/emberjs/ember.js/pull/2563 (only theoretical)
+
+total:33
+
+

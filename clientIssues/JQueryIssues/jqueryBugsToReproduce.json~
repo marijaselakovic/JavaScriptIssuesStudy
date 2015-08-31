@@ -1,0 +1,60 @@
+REQUEST:  { host: 'api.github.com',
+  port: 443,
+  path: '/search/issues?q=performance+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=1&per_page=100',
+  method: 'get',
+  headers: 
+   { host: 'api.github.com',
+     'content-length': '0',
+     authorization: 'Basic bWFyaWphc2VsYWtvdmljOm1qLjA0LjAxMTA=',
+     'user-agent': 'My-Cool-GitHub-App',
+     accept: 'application/vnd.github.v3+json' } }
+STATUS: 200
+HEADERS: {"server":"GitHub.com","date":"Tue, 30 Jun 2015 09:32:00 GMT","content-type":"application/json; charset=utf-8","content-length":"246450","status":"200 OK","x-ratelimit-limit":"30","x-ratelimit-remaining":"29","x-ratelimit-reset":"1435656780","cache-control":"no-cache","x-github-media-type":"github.v3; format=json","link":"<https://api.github.com/search/issues?q=performance+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=2&per_page=100>; rel=\"next\", <https://api.github.com/search/issues?q=performance+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=2&per_page=100>; rel=\"last\"","x-xss-protection":"1; mode=block","x-frame-options":"deny","content-security-policy":"default-src 'none'","access-control-allow-credentials":"true","access-control-expose-headers":"ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval","access-control-allow-origin":"*","x-github-request-id":"8D0C4265:1225:98C97DB:5592620F","strict-transport-security":"max-age=31536000; includeSubdomains; preload","x-content-type-options":"nosniff","vary":"Accept-Encoding","x-served-by":"2811da37fbdda4367181b328b22b2499"}
+REQUEST:  { host: 'api.github.com',
+  port: 443,
+  path: '/search/issues?q=performance+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=2&per_page=100',
+  method: 'get',
+  headers: 
+   { host: 'api.github.com',
+     'content-length': '0',
+     authorization: 'Basic bWFyaWphc2VsYWtvdmljOm1qLjA0LjAxMTA=',
+     'user-agent': 'My-Cool-GitHub-App',
+     accept: 'application/vnd.github.v3+json' } }
+STATUS: 200
+HEADERS: {"server":"GitHub.com","date":"Tue, 30 Jun 2015 09:32:01 GMT","content-type":"application/json; charset=utf-8","content-length":"157429","status":"200 OK","x-ratelimit-limit":"30","x-ratelimit-remaining":"28","x-ratelimit-reset":"1435656780","cache-control":"no-cache","x-github-media-type":"github.v3; format=json","link":"<https://api.github.com/search/issues?q=performance+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=1&per_page=100>; rel=\"first\", <https://api.github.com/search/issues?q=performance+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=1&per_page=100>; rel=\"prev\"","x-xss-protection":"1; mode=block","x-frame-options":"deny","content-security-policy":"default-src 'none'","access-control-allow-credentials":"true","access-control-expose-headers":"ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval","access-control-allow-origin":"*","x-github-request-id":"8D0C4265:0FEC:1AABB87:55926211","strict-transport-security":"max-age=31536000; includeSubdomains; preload","x-content-type-options":"nosniff","vary":"Accept-Encoding","x-served-by":"173530fed4bbeb1e264b2ed22e8b5c20"}
+REQUEST:  { host: 'api.github.com',
+  port: 443,
+  path: '/search/issues?q=optimize+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=1&per_page=100',
+  method: 'get',
+  headers: 
+   { host: 'api.github.com',
+     'content-length': '0',
+     authorization: 'Basic bWFyaWphc2VsYWtvdmljOm1qLjA0LjAxMTA=',
+     'user-agent': 'My-Cool-GitHub-App',
+     accept: 'application/vnd.github.v3+json' } }
+STATUS: 200
+HEADERS: {"server":"GitHub.com","date":"Tue, 30 Jun 2015 09:32:03 GMT","content-type":"application/json; charset=utf-8","content-length":"229056","status":"200 OK","x-ratelimit-limit":"30","x-ratelimit-remaining":"27","x-ratelimit-reset":"1435656780","cache-control":"no-cache","x-github-media-type":"github.v3; format=json","link":"<https://api.github.com/search/issues?q=optimize+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=2&per_page=100>; rel=\"next\", <https://api.github.com/search/issues?q=optimize+repo%3Ajquery%2Fjquery+is%3Apr+is%3Aclosed&page=2&per_page=100>; rel=\"last\"","x-xss-protection":"1; mode=block","x-frame-options":"deny","content-security-policy":"default-src 'none'","access-control-allow-credentials":"true","access-control-expose-headers":"ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval","access-control-allow-origin":"*","x-github-request-id":"8D0C4265:0FF3:8E3BA8D:55926212","strict-transport-security":"max-age=31536000; includeSubdomains; preload","x-content-type-options":"nosniff","vary":"Accept-Encoding","x-served-by":"d594a23ec74671eba905bf91ef329026"}
+total number:263
+https://github.com/jquery/jquery/pull/1560 (performance related, accepted) -- small change maybe test should be bit different
+https://github.com/jquery/jquery/pull/1652 -- not accepted
+https://github.com/jquery/jquery/pull/1415 -- not performance related
+https://github.com/jquery/jquery/pull/435 -- not accepted
+https://github.com/jquery/jquery/pull/1558 -- not accepted
+https://github.com/jquery/jquery/pull/725 -- perf related, accepted, perf difference: 45%
+https://github.com/jquery/jquery/pull/1556 -- not accepted
+https://github.com/jquery/jquery/pull/176 -- not accepted
+https://github.com/jquery/jquery/pull/1191 -- not perf related
+https://github.com/jquery/jquery/pull/1537 -- not perf related
+https://github.com/jquery/jquery/pull/1182 -- skip for now
+https://github.com/jquery/jquery/pull/282 -- not accepted
+https://github.com/jquery/jquery/pull/528 -- not perf related
+https://github.com/jquery/jquery/pull/590 -- perf related, about 20%
+https://github.com/jquery/jquery/pull/1397
+https://github.com/jquery/jquery/pull/743
+https://github.com/jquery/jquery/pull/702
+https://github.com/jquery/jquery/pull/596
+https://github.com/jquery/jquery/pull/1856
+https://github.com/jquery/jquery/pull/84
+https://github.com/jquery/jquery/pull/209
+https://github.com/jquery/jquery/pull/707
+https://github.com/jquery/jquery/pull/239

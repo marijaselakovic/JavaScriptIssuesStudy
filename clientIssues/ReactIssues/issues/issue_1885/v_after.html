@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+
+</head>
+<body>
+<p>Regular Expression</p>
+
+<div id="message"></div>
+</body>
+
+
+<script>
+
+    var withhit = '<div>awdoijawdoijawdoiawjdoawijdawoijdawodjwaodjawdoajwdoiawjdawoidjaowijdawoijawodjawodjawodijawdijawdoiawjdoawijdawoijdawodjwaodjawdoajwdoiawjdawoidjaowijdawoijawodjawodjawodijawdijawdoiawjdoawijdawoijdawodjwaodjawdoajwdoiawjdawoidjaowijdawoijawodjawodjawodijawdijawdoiawjdoawijdawoijdawodjwaodjawdoajwdoiawjdawoidjaowijdawoijawodjawodjawodijawdijawdoiawjdoawijdawoijdawodjwaodjawdoajwdoiawjdawoidjaowijdawoija<!--wodjawodjawodijawdijawdoiawjdoawijdawoijdawodjwaodjawdoajwdoiawjdawoidjaowijdawoijawodjawodjawodijawdijawdoiawjdoawijdawoijdawodjwaodjawdoajwdoiawjdawoidjaowijdawoijawodjawodjawodijawd';
+    var R1 = /^[ \r\n\t\f]/;
+    var R2 = /<(!--|link|noscript|meta|script|style)[ \r\n\t\/>]/;
+
+    var f1 = function() {
+        var c = 0;
+        var html = withhit;
+        for (var i = 0; i < 100000; i++) {
+            if (R1.test(html) || html[0] === '<' && R2.test(html)) c++;
+
+        }
+
+
+    };
+
+    var a = execute(f1, 10);
+    var mean = mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url:'http://localhost:8081',
+        data:JSON.stringify({'mark':1, 'mean':mean}),
+        type:'POST',
+        contentType:'application/json',
+        success:function(data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error:function(xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+
+</html>

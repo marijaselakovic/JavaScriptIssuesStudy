@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.0/handlebars.js"></script>
+    <script src="ember_before.js"></script>
+
+</head>
+<body>
+<p>Console.assert without check if test is true</p>
+
+<div id="message"></div>
+
+
+<script>
+    Ember.assert('Assertion is thrown');
+
+      var f1 = function () {
+
+        for (var i=0; i<100000; i++){
+            Ember.assert('Assertion is thrown',true);
+
+        }
+
+
+    };
+    var a = execute(f1, 10);
+    var mean=mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':0,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

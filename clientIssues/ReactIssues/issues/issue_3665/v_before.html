@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+
+</head>
+<body>
+<p>Has own property</p>
+
+<div id="message"></div>
+</body>
+
+
+<script>
+    function generateObject() {
+        var obj = {};
+        for (var i = 0; i < 10000; i++) {
+            obj[i] = i + 1;
+
+        }
+        return obj;
+    }
+    var obj = generateObject();
+
+
+    var f1 = function() {
+
+        for (var i = 1; i <= 500000; i++) {
+            obj.hasOwnProperty(i);
+
+
+        }
+
+    };
+
+
+    var a = execute(f1, 10);
+    var mean = mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url:'http://localhost:8081',
+        data:JSON.stringify({'mark':0, 'mean':mean}),
+        type:'POST',
+        contentType:'application/json',
+        success:function(data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error:function(xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+
+</html>

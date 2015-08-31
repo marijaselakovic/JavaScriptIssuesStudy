@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.0/handlebars.js"></script>
+    <script src="ember_before.js"></script>
+
+</head>
+<body>
+<p>Without caching of computed properties</p>
+
+<div id="message"></div>
+
+
+<script>
+    var MyClass = Ember.Object.extend({
+        foo: Ember.computed(function() {
+
+        }),
+
+        fooDidChange: Ember.observer('foo', function() {
+
+        }),
+
+        bar: Ember.computed(function() {
+
+        })
+    });
+
+    var SubClass = MyClass.extend({
+        baz: Ember.computed(function() {
+
+        })
+    });
+
+    SubClass.reopen({
+        bat: Ember.computed(function() {
+
+        }).meta({ iAmBat: true })
+    });
+
+
+
+
+
+
+    var f1 = function () {
+        var list = [];
+        for (var i=0; i<5000; i++){
+            MyClass.eachComputedProperty(function(name) {
+                list.push(name);
+            });
+            SubClass.eachComputedProperty(function(name, meta) {
+                list.push(name);
+            });
+
+
+        }
+
+
+
+    };
+
+
+    var a = execute(f1, 10);
+    var mean=mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':0,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

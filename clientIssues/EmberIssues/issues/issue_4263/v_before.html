@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+<body>
+<p>Recursively check parents node to see is node in document (loop up DOM tree)</p>
+
+<div id="message"></div>
+
+
+<script>
+    var NEST_DEPTH = 10,
+            childDiv, childContent, nested, parent;
+
+    childDiv = document.createElement("div");
+    childContent = document.createTextNode("Hello!");
+    childDiv.appendChild(childContent);
+
+    nested = childDiv;
+    for (var i = 0; i < NEST_DEPTH; i++) {
+        parent = document.createElement("div");
+        parent.appendChild(nested);
+        nested = parent;
+    }
+
+    document.body.appendChild(nested);
+    var elementInDocument = function(element) {
+        while (element = element.parentNode) {
+            if (element === document) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+
+    var f1 = function() {
+        for (var i = 0; i < 100000; i++) {
+            elementInDocument(childDiv);
+        }
+
+    };
+
+    var a = execute(f1, 10);
+    var mean = mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url:'http://localhost:8081',
+        data:JSON.stringify({'mark':0, 'mean':mean}),
+        type:'POST',
+        contentType:'application/json',
+        success:function(data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error:function(xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.0/handlebars.js"></script>
+    <script src="ember_after.js"></script>
+
+</head>
+<body>
+<p>Usind .defineProperty only with update of object id</p>
+
+<div id="message"></div>
+
+
+<script>
+    var pool = [];
+    for(var i =0; i < 100000; i++) {
+        pool.push(Ember.Object.create());
+    }
+
+
+
+
+    var f1 = function () {
+        for (var p = 0; p < pool.length; p++) {
+            Ember.guidFor(pool[p]);
+        }
+
+    };
+    var a = execute(f1, 10);
+    var mean=mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':1,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

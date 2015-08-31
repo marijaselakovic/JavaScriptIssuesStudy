@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+<body>
+<p>For in loop</p>
+
+<div id="message"></div>
+
+
+<script>
+
+    function assign(original, args) {
+
+
+        for (var i = 0, l = args.length; i < l; i++) {
+            var arg = args[i];
+
+            if (!arg) {
+                continue;
+            }
+
+            var updates = Object.keys(arg);
+
+            for (var i = 0, l = updates.length; i < l; i++) {
+                var prop = updates[i];
+                original[prop] = arg[prop];
+            }
+        }
+
+        return original;
+    }
+
+
+    var obj = {'a':1};
+    var obj1 = {};
+
+    for (var i = 0; i < 50; i++) {
+        obj1[i] = i;
+    }
+
+    var f1 = function() {
+        for (var i = 0; i < 1000; i++) {
+            assign(obj, [obj1]);
+
+        }
+
+    };
+
+    var a = execute(f1, 10);
+    var mean = mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url:'http://localhost:8081',
+        data:JSON.stringify({'mark':1, 'mean':mean}),
+        type:'POST',
+        contentType:'application/json',
+        success:function(data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error:function(xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

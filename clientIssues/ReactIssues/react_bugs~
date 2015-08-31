@@ -1,0 +1,27 @@
+React:
+
+Number of merged pull requests:1554
+Perf related:
+
+https://github.com/facebook/react/pull/480 -- takes more time
+
+
+11 in total
+
+Done successfuly:
+https://github.com/facebook/react/pull/3665 -- try (done per improvement large)
+https://github.com/facebook/react/pull/879 -- reproduced, perf improvement
+https://github.com/facebook/react/pull/808 -- without unit test
+https://github.com/facebook/react/pull/895 -- done, perf improvement
+https://github.com/facebook/react/pull/3574
+
+No perf improvement:
+https://github.com/facebook/react/pull/934 -- no perf improvement
+https://github.com/facebook/react/pull/1885 -- even negative in V8
+https://github.com/facebook/react/pull/1599 -- maybe dom related
+
+Can not be reproduced:
+https://github.com/facebook/react/pull/367/ -- build can not be made
+https://github.com/facebook/react/pull/120 -- build didn't work as expected
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery_after.js"></script>
+    <script src="../../js/execute.js"></script>
+
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+
+</head>
+<body>
+<p>JQuery each call</p>
+<div id="1"></div>
+<div id="message"></div>
+
+
+
+<script>
+    var div=jQuery("#1");
+
+    var f1 = function () {
+        for (var i=0; i<1000; i++) {
+            div.css('width');
+
+        }
+
+    };
+
+
+    var a = execute(f1, 10);
+    var mean=mean(a);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':1,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

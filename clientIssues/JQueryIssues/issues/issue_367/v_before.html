@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery_before.js"></script>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+
+</head>
+<body>
+<p>Without separation of cases</p>
+
+
+<ul>
+    <li id="foo">foo</li>
+    <li id="bar">bar</li>
+</ul>
+<div id="message"></div>
+
+
+
+<script>
+
+
+    var f1 = function () {
+        for (var i=0; i<1000; i++){
+            jQuery("<div/>").index();
+            jQuery("#foo").index();
+            jQuery('#bar').index();
+        }
+
+        };
+
+
+
+    var a = execute(f1, 10);
+    var mean=mean(a);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':0,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

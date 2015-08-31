@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+
+
+
+</head>
+<body>
+<p>Using textContent</p>
+<p id="demo1">Demo</p>
+<p id="demo2">Demo</p>
+<p id="demo3">Demo</p>
+<p id="demo4">Demo</p>
+<p id="demo5">Demo</p>
+
+
+
+<div id="message" ></div>
+</body>
+
+
+<script >
+
+    var f1 = function () {
+        for (var i=0; i<10000; i++){
+        document.getElementById("demo1").textContent = "Paragraph changed!";
+        document.getElementById("demo2").textContent = "Paragraph changed!";
+        document.getElementById("demo3").textContent = "Paragraph changed!";
+        document.getElementById("demo4").textContent = "Paragraph changed!";
+        document.getElementById("demo5").textContent = "Paragraph changed!";
+
+        }
+
+
+
+    };
+    f1();
+
+    var a = execute(f1, 10);
+    var mean=mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':1,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+
+
+</html>

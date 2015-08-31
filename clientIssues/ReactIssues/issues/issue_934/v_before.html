@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../js/execute.js"></script>
+    <script src="//cdn.jsdelivr.net/jstat/1.2.1/jstat.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="JSXTransformer.js"></script>
+    <script src="react_before.js"></script>
+
+
+
+</head>
+<body>
+<p>Original ID generation</p>
+
+<div id="message" ></div>
+</body>
+
+
+<script type="text/jsx">
+    /** @jsx React.DOM */
+
+
+      var f1 = function () {
+
+        for (var i=0; i<50; i++){
+            var instance =
+                    <div>
+                        <div key="apple" />
+                        <div key="banana" />
+                        <div key={0} />
+                        <div key={123} />
+                    </div>;
+
+            React.render(instance, document.createElement('div'));
+
+        }
+
+    };
+
+    var a = execute(f1, 10);
+    var mean=mean(a);
+    console.log(mean);
+
+
+    $.ajax({
+        url: 'http://localhost:8081',
+        data: JSON.stringify({'mark':0,'mean':mean}),
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#message').html('done, close browser');
+
+
+            console.log('Success: ')
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+        }
+    });
+
+</script>
+
+
+
+</html>

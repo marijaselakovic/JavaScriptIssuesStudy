@@ -1,0 +1,47 @@
+Ember.js
+
+Only merged pr
+Keyword: optimize (25 total) -- list only performance related
+https://github.com/emberjs/ember.js/pull/11338 -- avoid for in loop
+https://github.com/emberjs/ember.js/pull/10701 (maybe)
+https://github.com/emberjs/ember.js/pull/5547
+https://github.com/emberjs/ember.js/pull/5444
+https://github.com/emberjs/ember.js/pull/4329 -- several optimizations
+https://github.com/emberjs/ember.js/pull/3881/
+https://github.com/emberjs/ember.js/pull/3690
+https://github.com/emberjs/ember.js/pull/3288
+https://github.com/emberjs/ember.js/pull/3283
+https://github.com/emberjs/ember.js/pull/3104
+
+Keyword: optimization
+Keyword: performance (78 total)
+https://github.com/emberjs/ember.js/pull/11513
+https://github.com/emberjs/ember.js/pull/10350 -- interesting
+https://github.com/emberjs/ember.js/pull/10016
+https://github.com/emberjs/ember.js/pull/9991 -- interesting
+https://github.com/emberjs/ember.js/pull/9721/
+https://github.com/emberjs/ember.js/pull/9551
+https://github.com/emberjs/ember.js/pull/9469 -- look into
+https://github.com/emberjs/ember.js/pull/5616/--more optimizations in one commit
+https://github.com/emberjs/ember.js/pull/5523
+https://github.com/emberjs/ember.js/pull/5450
+https://github.com/emberjs/ember.js/pull/5444
+https://github.com/emberjs/ember.js/pull/5278
+https://github.com/emberjs/ember.js/pull/5212/
+https://github.com/emberjs/ember.js/pull/4645
+https://github.com/emberjs/ember.js/pull/4263 -- try this first
+https://github.com/emberjs/ember.js/pull/4257 -- also dom related
+https://github.com/emberjs/ember.js/pull/4158
+https://github.com/emberjs/ember.js/pull/4023
+https://github.com/emberjs/ember.js/pull/3755
+https://github.com/emberjs/ember.js/pull/3696
+https://github.com/emberjs/ember.js/pull/3482
+https://github.com/emberjs/ember.js/pull/3203
+https://github.com/emberjs/ember.js/pull/3174
+https://github.com/emberjs/ember.js/pull/2921
+https://github.com/emberjs/ember.js/pull/2833
+https://github.com/emberjs/ember.js/pull/2810/
+https://github.com/emberjs/ember.js/pull/2563
+https://github.com/emberjs/ember.js/pull/263 -- take look into this
+
+
