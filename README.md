@@ -14,7 +14,7 @@ We run all experiments on a machine with a quad-core 2.10GHz CPU and 16GB RAM.
   This will install jsexecutor with all dependencies.
   
 #Run Experiments
-##To reproduce server-side perf issues:
+##To reproduce server-side performance issues:
 
 In the JavaScriptIssuesStudy directory:
 
@@ -35,4 +35,13 @@ We use the following values in our experiments:
 ```
 Example of reproducing perf issue that runs in server environments:
 jsexecutor serverIssues/ChalkIssues/issues/issue_27a/test_case_before.js serverIssues/ChalkIssues/issues/issue_27a/test_case_after.js 5 5 10 0.9
+```
+
+##To reproduce client-side performance issue:
+
+In the JavaScriptIssuesStudy directory:
+```
+node browserJsExecutor.js <command to run browser> <issue path> Nvm
+```
+
 
