@@ -26,14 +26,16 @@ OR
 jsexecutor clientServerIssues/<folder containing tests and program versions>/issues/issue_<number>/test_case_before.js rclientServerIssues/<folder containing tests and program versions>/issues/issue_<number>/test_case_after.js Nvm Nwarmup Nmeasure 0.9
 ```
 Where:
-- ``` Nvm ```: the number of repeadely started VM instances
+- ``` Nvm ```: the number of repeadely launched VM instances
 - ```Nwarmup```: the number of test repetitions to warmup JIT compiler
 - ```Nmeasure```: number of test repetitions collected as an input to statistical test
 
 We use the following values in our experiments:
 ``` Nvm = 5, Nwarmup=5, Nmeasure=10 ```
 ```
+```
 Example of reproducing perf issue that runs in server environments:
+```
 jsexecutor serverIssues/ChalkIssues/issues/issue_27a/test_case_before.js serverIssues/ChalkIssues/issues/issue_27a/test_case_after.js 5 5 10 0.9
 ```
 
@@ -43,5 +45,7 @@ In the JavaScriptIssuesStudy directory:
 ```
 node browserJsExecutor.js <command to run browser> <issue path> Nvm
 ```
+
+
 
 
