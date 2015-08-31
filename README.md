@@ -19,11 +19,7 @@ We run all experiments on a machine with a quad-core 2.10GHz CPU and 16GB RAM.
 In the JavaScriptIssuesStudy directory:
 
 ```
-jsexecutor serverIssues/<folder containing tests and program versions>/issues/issue_<number>/test_case_before.js serverIssues/<folder containing tests and program versions>/issues/issue_<number>/test_case_after.js Nvm Nwarmup Nmeasure 0.9
-```
-OR
-```
-jsexecutor clientServerIssues/<folder containing tests and program versions>/issues/issue_<number>/test_case_before.js rclientServerIssues/<folder containing tests and program versions>/issues/issue_<number>/test_case_after.js Nvm Nwarmup Nmeasure 0.9
+jsexecutor <issue path>/test_case_before.js <issue path>/test_case_after.js Nvm Nwarmup Nmeasure 0.9
 ```
 Where:
 - ``` Nvm ```: the number of repeadely launched VM instances
@@ -44,13 +40,17 @@ In the JavaScriptIssuesStudy directory:
 ```
 node browserJsExecutor.js <command to run browser> <issue path> Nvm
 ```
+Where:
+- ``` Nvm ```: the number of repeadely launched VM instances
+Values for ```Nwarmup and Nmeasure``` are hardcoded, and the default value for ``` Nvm = 5 ```
+
 Examples of reproducing perf issue in Chrome and Firefox:
 ```
-node browserJsExecutor.js google-chrome clientIssues/AngularIssues/issues/issue_4359/
+node browserJsExecutor.js google-chrome clientIssues/AngularIssues/issues/issue_4359/ 5
 ```
 OR
 ```
-node browserJsExecutor.js firefox clientIssues/AngularIssues/issues/issue_4359/
+node browserJsExecutor.js firefox clientIssues/AngularIssues/issues/issue_4359/ 5
 ```
 
 
