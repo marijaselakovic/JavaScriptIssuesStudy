@@ -34,7 +34,7 @@ Example of reproducing perf issue that runs in server environments:
 jsexecutor serverIssues/ChalkIssues/issues/issue_27a/test_case_before.js serverIssues/ChalkIssues/issues/issue_27a/test_case_after.js 5 5 10 0.9
 ```
 
-##To reproduce client-side performance issue:
+##To reproduce client-side performance issues:
 
 In the JavaScriptIssuesStudy directory:
 ```
