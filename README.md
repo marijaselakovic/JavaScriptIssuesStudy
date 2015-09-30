@@ -1,7 +1,10 @@
 # JavaScriptIssuesStudy
 #Introduction
 
-This repository contains reproduced 98 Real-World JavaScript performance issues from 16 JavaScript projects and the jsexecutor, tool for reliable performance measurement. 52 of all issues can be run only in browser environments, 28 in browser and node.js/io.js and 18 only in node.js/io.js environments.
+Understanding the performance problems that JavaScript developers face in practice is crucial to improve the performance of JavaScript programs. This repository contains 98 reproduced performance issues from 16 popular client-side and server-side JavaScript projects. It also contains jsexecutor, a tool for reliably measuring the performance of a JavaScript program. We make these issues available
+- to help developers to avoid common mistakes,
+- to help researchers develop performance-related tools and techniques that address relevant problems, and
+- to help developers of JavaScript engines to address prevalent bottleneck patterns.
 
 #Requirements
 We run all experiments on a machine with a dual-core 2.10GHz CPU and 16GB RAM. 
