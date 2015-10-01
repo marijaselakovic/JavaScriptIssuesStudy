@@ -7,7 +7,7 @@ Understanding the performance problems that JavaScript developers face in practi
 - to help developers of JavaScript engines to address prevalent bottleneck patterns.
 
 #Requirements
-We run all experiments on a machine with a dual-core 2.10GHz CPU and 16GB RAM. 
+We run all experiments on a machine with a Intel(R) Core(TM) i7-4600U CPU @ 2.10GHz and 16GB RAM. 
 - To experiment with issues that run on server-side environments: [node.js](http://nodejs.org/) environment, and/or [io.js](https://iojs.org/). We run experiments on node v0.10.37 and v0.12 and io.js 3.2.0. To switch between different versions of node.js and io.js, we use [nvm](https://www.npmjs.com/package/nvm).
 - Client-side issues can be run in Chrome or Firefox. We reproduce client-side issues in: Firefox 24, 31, 39 and Chrome 17, 29, 42. All releases of Firefox can be found at: https://ftp.mozilla.org/pub/firefox/releases/ and we downloaded all Chrome versions from: http://www.oldapps.com/google_chrome.php.
 - In the JavaScriptIssuesStudy directory:
