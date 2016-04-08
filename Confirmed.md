@@ -1,4 +1,4 @@
-The following table gives the overview of reported optimizations, where the Optimization Pattern number corresponds to the value of ID column in Table 4 of paper: Performance Issues and Optimizations in JavaScript: An Empirical Study. Function column denotes optimized code location.
+The following table gives the overview of reported optimizations, where the Optimization Pattern number corresponds to the value of ID column in Table 4 of paper: Performance Issues and Optimizations in JavaScript: An Empirical Study. Function column denotes optimized code location/s.
 
 # Reported optimizations (RQ5)
 | Optimization Pattern | Library | Function | Pull Request | Status |
