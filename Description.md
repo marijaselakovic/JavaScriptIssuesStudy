@@ -1,4 +1,4 @@
-The following table gives an overview of studied performance issues and their root causes. The number in parentheses denotes number/s of commit/s if the pull request contains more performance related optimizations.
+The following table gives an overview of studied performance issues and their root causes. The number in parentheses denotes commit number/s if the pull request contains more performance related optimizations.
 
 # Root causes of performance issues (RQ1)
 | Pull request | Library | Description | Root causes | 
