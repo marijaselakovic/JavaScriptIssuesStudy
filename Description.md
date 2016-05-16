@@ -3,7 +3,7 @@ The following table gives an overview of studied performance issues and their ro
 # Root causes of performance issues (RQ1)
 | Pull request | Library | Description | Root causes | 
 | --- | --- | --- |--- | --- | 
-| 102 | JQuery | Avoid Array.slice, for the case when argument is negative number | Inefficient API, Inefficient Copying, Generic API |
+| 102 | JQuery | Avoid Array.slice, for the case when argument is negative number | Inefficient API, Inefficient/Redundant copying, Generic API |
 248 | JQuery | Give support for more elements to use innerHtml instead of appendChild in html() function | Inefficient API, Special cases |
 367 | JQuery |When searching for a given element separate two cases: when element is undefined and when element is string into two conditions, avoid string check when element is undefined | Special cases |
 590 | JQuery |Use for loop instead Jquery.each | Inefficient iteration |
@@ -11,7 +11,7 @@ The following table gives an overview of studied performance issues and their ro
 7587 | JQuery |Prefer window.JSON at first place if available | Other |
 295 (1) | JQuery | Not adding arbitrary hooks into hmtl elements| Other |
 295 (2) | JQuery | Assign value to variable val only when value is not a function, instead of doing it always. Localize val variable to each block | JIT unfrendly |
-200 | JQuery | Abstraction of method that clones the DOM element. This avoids calls to Jquery.find method | Inefficient API usage, Inefficient copying |
+200 | JQuery | Abstraction of method that clones the DOM element. This avoids calls to Jquery.find method | Inefficient API usage, Inefficient/Redundant copying |
 4359 | Angular | Use &1 instead of %2 for even odd checking| Other |
 4457 | Angular | Empty() or Html("") JQuery function| Inefficient API usage |
 5388 | Angular | To invoke function use f.apply instead of function call with arguments check (args.length)| Inefficient API usage, Special cases |
@@ -20,7 +20,7 @@ The following table gives an overview of studied performance issues and their ro
 7163 | Angular | Caching the child scope class| Repeated execution |
 7501 | Angular | Avoid stringification with toJson (JSON.stringify) in case of number| Inefficient API usage, Generic API, Special cases |
 7735 | Angular | Native isArray instead of toString call| Inefficient API usage, API reimplementation |
-9942 | Angular | Use Array.slice for coping array instead of for loop| Inefficient copying |
+9942 | Angular | Use Array.slice for coping array instead of for loop| Inefficient/Redundant copying |
 8898 | Angular | Use for loop instead of forEach (angular method)| Inefficient iteration |
 11215 | Angular | Remove unnecessary checks: isArray, isRegExp, isObject, isTypedArray| Inefficient API usage, Repeated execution, Repeated checks|
 9369 | Angular | Use textContent property access instead of .text()| Generic API |
@@ -61,6 +61,28 @@ The following table gives an overview of studied performance issues and their ro
 1224 | Underscore | Replace for in with .keys and traditional for loop | Inefficient iteration |
 1578 | Underscore | Direct function call instead of .call | Inefficient API usage |
 1666 | Underscore | When comparing two objects, first compare do they have same number of properties and then is every property equal | Inefficient API usage, Inefficient iteration |
+1700 | Underscore | Prefer using .call instead of apply | Inefficient API usage, Inefficient iteration |
+1708 | Underscore | Replace functional programming style with for loop | Inefficient API usage, Inefficient iteration |
+1860 | Underscore | Explicitly apply an otherwise implicit type conversion to avoid applying it multiple times | Inefficient API usage, Inefficient iteration, Repeated execution |
+30 | Underscore.string | Use Array.join instead of concatenation | Inefficient API usage, Inefficient iteration, API reimplementation |
+347 (1) | Underscore.string | Do implicit string conversion instead of String wrapper in startsWith method | Inefficient API usage |
+347 (2) | Underscore.string | Dont 'slice' the string, use indexOf and lastIndexOf methods | Inefficient API usage |
+2768 | Backbone | Instead of calling push with apply, iterate over set of elements and push each of them separately | Inefficient API usage, Inefficient iteration |
+2858 | Backbone | In the function that removes all callbacks for all events, the statement events={} is replaced by events=void 0 | Other |
+1766 | Backbone | Avoid unnecessary object creation | Inefficient/Redundant copying |
+1097 | Backbone | Caching regular expression | Repeated execution |
+136a | EJS | Replaced buf.push() and buf.join() with string concatentation | Inefficient API usage |
+136b | EJS | Replaced string.substr(i, 1) with string[i] | Inefficient API usage, Inefficient/Redundant copying |
+136c | EJS | Hoisted str[i] out of loop| Repeated execution |
+1625 (1) | Less | Cache array of functions for faster lookup | Repeated execution |
+1831 | Less | Caching matching elements | Repeated execution |
+317 | Moment | Cache functions that are likely to be reused on the same object with the same input | Inefficient API usage, Repeated execution |
+1875 | Moment | Assuming that object has finite number of properties, instead of interating through list of properties and checking is it defined in object, try to check them in if conditionals | Inefficient API usage, Inefficient/Redundant copying |
+1885 | Moment | Adding check in the case of null input parameter and adapting the method's behaviour for this case | Generic API, Inefficient/Redundant copying, Special cases |
+8 | Node-lru-cache | avoid Object.keys(obj)[i]; instead use for in loop.  | Inefficient API usage, Inefficient iteration, Inefficient/Redundant copying |
+
+
+
 
 
 
