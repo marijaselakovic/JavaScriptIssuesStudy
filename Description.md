@@ -79,7 +79,15 @@ The following table gives an overview of studied performance issues and their ro
 317 | Moment | Cache functions that are likely to be reused on the same object with the same input | Inefficient API usage, Repeated execution |
 1875 | Moment | Assuming that object has finite number of properties, instead of interating through list of properties and checking is it defined in object, try to check them in if conditionals | Inefficient API usage, Inefficient/Redundant copying |
 1885 | Moment | Adding check in the case of null input parameter and adapting the method's behaviour for this case | Generic API, Inefficient/Redundant copying, Special cases |
-8 | Node-lru-cache | avoid Object.keys(obj)[i]; instead use for in loop.  | Inefficient API usage, Inefficient iteration, Inefficient/Redundant copying |
+8 | Node-lru-cache | Avoid Object.keys(obj)[i]; instead use for in loop.  | Inefficient API usage, Inefficient iteration, Inefficient/Redundant copying |
+8 | Node-lru-cache | Avoid Object.keys(obj)[i]; instead use for in loop.  | Inefficient API usage, Inefficient iteration, Inefficient/Redundant copying |
+388 (2) | Cheerio | Avoid uneccessary function call in conditional | Repeated checks |
+388 (5) | Cheerio | String concat instead of join | Inefficient API usage |
+386 | Cheerio | Avoid unnecessary computation | Generic API |
+385 | Cheerio | Check more on what proposed function do, but the idea is to switch to another, cheaper function call | Inefficient API usage |
+369 (5)| Cheerio | Inline object lookup | Inefficient API usage, Inefficient/Redundant copying |
+369 (8)| Cheerio | Avoid recomputing value that will be reused | Repeated execution |
+
 
 
 
