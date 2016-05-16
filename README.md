@@ -54,7 +54,7 @@ OR
 ```
 node browserJsExecutor.js firefox clientIssues/AngularIssues/issues/issue_4359/ 5
 ```
-
+Furthermore, we identified ten recurring optimization patterns and found 139 uknown occurences of these patterns accross studied programs. We reported several optimizations and information on reported and confirmed optimizations can be found in: https://github.com/marijaselakovic/JavaScriptIssuesStudy/blob/master/Confirmed.md
 
 
 
