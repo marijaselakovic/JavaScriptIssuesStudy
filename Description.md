@@ -13,6 +13,21 @@ The following table gives an overview of studied performance issues and their ro
 295 (2) | JQuery | Assign value to variable val only when value is not a function, instead of doing it always. Localize val variable to each block | JIT unfrendly |
 200 | JQuery | Abstraction of method that clones the DOM element. This avoids calls to Jquery.find method | Inefficient API usage, Inefficient copying |
 4359 | Angular | Use &1 instead of %2 for even odd checking| Other |
+4457 | Angular | Empty() or Html("") JQuery function| Inefficient API usage |
+5388 | Angular | To invoke function use f.apply instead of function call with arguments check (args.length)| Inefficient API usage, Special cases |
+5457 | Angular | Two calls to CharAt instead of substr| Inefficient API usage |
+7012 | Angular | Use Object.keys instead of for in + hop| Inefficient iteration |
+7163 | Angular | Caching the child scope class| Repeated execution |
+7501 | Angular | Avoid stringification with toJson (JSON.stringify) in case of number| Inefficient API usage, Generic API, Special cases |
+7735 | Angular | Native isArray instead of toString call| Inefficient API usage, Inefficient reimplementation |
+9942 | Angular | Use Array.slice for coping array instead of for loop| Inefficient copying |
+8898 | Angular | Use for loop instead of forEach (angular method)| Inefficient iteration |
+11215 | Angular | Remove unnecessary checks: isArray, isRegExp, isObject, isTypedArray| Inefficient API usage, Repeated execution, Repeated checks|
+9369 | Angular | Use textContent property access instead of .text()| Generic API |
+8515 (7,8,10)| Angular | Use for loop instead of forEach (angular method)| API reimplementation|
+8515 (12)| Angular | Dont register DOM listener for $destroy event| Special cases|
+
+
 
 
 
