@@ -37,6 +37,26 @@ The following table gives an overview of studied performance issues and their ro
 7759 (9)| Angular | document.window has reference to itself, for checking window property of document use this, instead of checking location and document | Inefficient API usage |
 7759 (11)| Angular | Always use .textContext property access instead of .innerText in some cases | Inefficient API usage |
 10351 | Angular | Instead of setter method use getter.assign | Inefficient API usage |
+4263 | Ember | Use document.contains to see if element exist in DOM instead of looping DOM tree | Inefficient API usage, API reimplementation |
+4329 (1) | Ember | Avoid for in, for checking object property use direct access | Repeated checks |
+4329 (3) | Ember | Use internalized keys for accessing object properties | Other |
+4329 (4) | Ember | Reduce usage of indexOf, it is considered as an expensive function| Other |
+5547 | Ember | Move try catch block in code-critical part | JIT unfriendly |
+9991 | Ember | Instead of indexOf(has_this) use lastIndexOf (has_this,0). The prefix has_this is always 'this.' and matches the access of properties like: this.bar | Inefficient API usage
+4158 | Ember | When retriving the unique id of the object (method guideFor) first check is it defined. If it is not defined, then generate new one and assign as: obj[prop]=value | Inefficient API usage |
+11338 | Ember | Avoid for in loop, use Object.keys | Inefficient iteration |
+3174 | Ember | Avoid console.assert, the condition that checks whether the assert should be called is inserted | Inefficient API usage, Repeated checks, Special cases|
+3288 | Ember | Use Ember.ArrayPolyfills.indexOf insteadOf Ember.EnumerableUtils.indexOf | Inefficient API usage |
+5212 | Ember | Caching computed properties of the object, since they are almost never changed | Inefficient iteration, Repeated execution |
+3665 | React | Use undefined===obj[prop] check instead of hasOwnProperty | Inefficient API usage |
+934 | React | Simplified generation of node id | Inefficient API usage, Repeated checks |
+808 | React | Use textContent instead of innerHtml | Inefficient API usage |
+1885 | React | Use RegExp test instead of several indexOf | Inefficient API usage, Generic API |
+
+
+
+
+
 
 
 
