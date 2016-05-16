@@ -52,7 +52,15 @@ The following table gives an overview of studied performance issues and their ro
 934 | React | Simplified generation of node id | Inefficient API usage, Repeated checks |
 808 | React | Use textContent instead of innerHtml | Inefficient API usage |
 1885 | React | Use RegExp test instead of several indexOf | Inefficient API usage, Generic API |
-
+68 | Underscore | Algorithmic improvement based on user hint (give as input sorted array) | Special cases |
+572 | Underscore | Replace Array.concat with Array.push | Inefficient API usage, Inefficient iteration |
+39 | Underscore | Replace split.join with replace | Inefficient API usage |
+928 | Underscore | Hoist function definition outside loop | Repeated execution, Repeated checks |
+1222 | Underscore | Replace for in with .keys and traditional for loop | Inefficient iteration |
+1223 | Underscore | Replace for in with .keys and traditional for loop | Inefficient iteration |
+1224 | Underscore | Replace for in with .keys and traditional for loop | Inefficient iteration |
+1578 | Underscore | Direct function call instead of .call | Inefficient API usage |
+1666 | Underscore | When comparing two objects, first compare do they have same number of properties and then is every property equal | Inefficient API usage, Inefficient iteration |
 
 
 
