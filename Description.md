@@ -87,6 +87,15 @@ The following table gives an overview of studied performance issues and their ro
 385 | Cheerio | Check more on what proposed function do, but the idea is to switch to another, cheaper function call | Inefficient API usage |
 369 (5)| Cheerio | Inline object lookup | Inefficient API usage, Inefficient/Redundant copying |
 369 (8)| Cheerio | Avoid recomputing value that will be reused | Repeated execution |
+27a | Chalk | Don't concatenate the arguments into string with slice.join if there is only one argument. In latter case use explicit string concatenation | Inefficient API usage, Generic API, Special cases |
+27b | Chalk | Precomputed style function. Merge multiple return statements to one | Other |
+28 | Chalk | Replace Array.prototype.reduce() with explicit for loop | Inefficient iteration |
+701 | Mocha | Use instanceof where supported instead of toString.call(err) === "[object Error]" | Inefficient API usage |
+763 | Mocha | The first commit is using Object.keys where possible instead of checking each property of the object | Inefficient API usage, API reimplementation, Inefficient/Redundant copying |
+403 | Request | Computation from the if is moved to a global variable, so it is done only once | Repeated execution, Repeated checks |
+1165 | Request | Remove everything from init() method that is not related to request initialization | Repeated execution |
+573 | Socket.io | Optimized switch, the most common cases are checked first | Other |
+689 | Socket.io | Combine two substring calls into one | Inefficient API usage, Inefficient/Redundant copying |
 
 
 
