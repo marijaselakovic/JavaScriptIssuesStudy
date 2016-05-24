@@ -11,8 +11,8 @@ The following table gives the overview of reported optimizations, where the Opti
 | 1 | Socket.io | Server.prototype.adapter | https://github.com/socketio/socket.io/pull/2432| Pending |
 | 3 | EJS | capitalize, downcase, upcase, truncate, truncate_words, replace | https://github.com/tj/ejs/pull/216| Pending |
 | 2 | EJS | parse | https://github.com/tj/ejs/pull/216| Pending |
-| 2 | Angular.js | $SnifferProvider | https://github.com/angular/angular.js/pull/13952| Pending |
-| 8 | Angular.js | ngClassWatchAction | https://github.com/angular/angular.js/pull/13952| Pending |
+| 2 | Angular.js | $SnifferProvider | https://github.com/angular/angular.js/pull/13952| Accepted |
+| 8 | Angular.js | ngClassWatchAction | https://github.com/angular/angular.js/pull/13952| Accepted |
 
 
 
