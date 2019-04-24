@@ -1,12 +1,12 @@
 # JavaScriptIssuesStudy
-#Introduction
+# Introduction
 
 Understanding the performance problems that JavaScript developers face in practice is crucial to improve the performance of JavaScript programs. This repository contains 98 reproduced performance issues from 16 popular client-side and server-side JavaScript projects. It also contains jsexecutor, a tool for reliably measuring the performance of a JavaScript program. We make these issues available
 - to help developers to avoid common mistakes,
 - to help researchers develop performance-related tools and techniques that address relevant problems, and
 - to help developers of JavaScript engines to address prevalent bottleneck patterns.
 
-#Requirements
+# Requirements
 We run all experiments on a machine with a Intel(R) Core(TM) i7-4600U CPU @ 2.10GHz and 16GB RAM. 
 - To experiment with issues that run on server-side environments: [node.js](http://nodejs.org/) environment, and/or [io.js](https://iojs.org/). We run experiments on node v0.10.37 and v0.12 and io.js 3.2.0. To switch between different versions of node.js and io.js, we use [nvm](https://www.npmjs.com/package/nvm).
 - Client-side issues can be run in Chrome or Firefox. We reproduce client-side issues in: Firefox 24, 31, 39 and Chrome 17, 29, 42. All releases of Firefox can be found at: https://ftp.mozilla.org/pub/firefox/releases/ and we downloaded all Chrome versions from: http://www.oldapps.com/google_chrome.php.
@@ -16,8 +16,8 @@ We run all experiments on a machine with a Intel(R) Core(TM) i7-4600U CPU @ 2.10
    ```.
   This will install jsexecutor with all dependencies.
   
-#Run Experiments
-##To reproduce server-side performance issues:
+# Run Experiments
+## To reproduce server-side performance issues:
 
 In the JavaScriptIssuesStudy directory:
 
@@ -37,7 +37,7 @@ Example of reproducing perf issue that runs in server environments:
 jsexecutor serverIssues/ChalkIssues/issues/issue_27a/test_case_before.js serverIssues/ChalkIssues/issues/issue_27a/test_case_after.js 5 5 10 0.9
 ```
 
-##To reproduce client-side performance issues:
+## To reproduce client-side performance issues:
 
 In the JavaScriptIssuesStudy directory:
 ```
